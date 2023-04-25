@@ -111,7 +111,9 @@ data
 *.pkl
 *.pkl.json
 *.log.json
-exps/
+exp/
+dataset/
+initmodel/
 
 # Pytorch
 *.pth
