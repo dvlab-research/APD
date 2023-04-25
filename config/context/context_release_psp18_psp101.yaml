@@ -1,0 +1,81 @@
+DATA:
+  data_root: dataset/voc2012
+  train_list: dataset/voc2012/list/context_train.txt
+  val_list: dataset/voc2012/list/context_val.txt
+  classes: 60
+
+TRAIN:
+  arch: psp
+  layers: 18
+  arch_t: psp
+  t_layers: 101
+  sync_bn: True  # adopt sync_bn or not
+  train_h: 473
+  train_w: 473
+  scale_min: 0.5  # minimum random scale
+  scale_max: 2.0  # maximum random scale
+  rotate_min: -10  # minimum random rotate
+  rotate_max: 10  # maximum random rotate
+  zoom_factor: 8  # zoom factor for final prediction during training, be in [1, 2, 4, 8]
+  ignore_label: 255
+  train_gpu: [0, 1, 2, 3]
+  workers: 16  # data loader workers
+  batch_size: 12  # batch size for training
+  batch_size_val: 24  # batch size for validation during training, memory and speed tradeoff
+  base_lr: 0.00075
+  epochs: 100
+  start_epoch: 0
+  power: 0.9
+  momentum: 0.9
+  weight_decay: 0.0001
+  manual_seed: 123
+  print_freq: 10
+  save_freq: 1
+  save_path: exp/release/context_kd_psp18_psp101/model
+  weight: 
+  t_weights: teacher_checkpoints/pspnet101_fc_context.pth #
+  resume:  # path to latest checkpoint (default: none)
+  evaluate: True  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  eval_freq: 1
+  
+  ### loss weights
+  aux_weight: 0.4
+  main_weight: 1
+  kl_weight: 10
+  pred_kmeans_weight: 10
+  proto_align_weight: 10
+  kmeans_temp: 10
+
+  #### setups for kmeans
+  kmeans_norm: True
+  kmeans_adapt_dim: 512
+  stu_trans: True
+  tea_trans: True
+  temperature: 1
+
+  #### for teacher trans INIT
+  teacher_lr: 0.00001  
+
+
+Distributed:
+  dist_url: tcp://127.0.0.1:6789
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+
+TEST:
+  test_list: dataset/voc2012/list/context_val.txt
+  split: val  # split in [train, val and test]
+  base_size: 512  # based size for scaling
+  test_h: 473
+  test_w: 473
+  scales: [1.0]  # evaluation scales, ms as [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
+  has_prediction: False  # has prediction already or not
+  index_start: 0  # evaluation start index in list
+  index_step: 0  # evaluation step index in list, 0 means to end
+  test_gpu: [0]
+  model_path: exp/release/context_kd_psp18_psp101/model/train_epoch_100.pth  # evaluation model path
+  save_folder: exp/release/context_kd_psp18_psp101/result/epoch_99/val/ss  # results save folder
+  colors_path: data/voc2012/voc2012_colors.txt  # path of dataset colors
+  names_path: data/voc2012/voc2012_names.txt  # path of dataset category names
