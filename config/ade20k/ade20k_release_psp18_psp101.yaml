@@ -77,7 +77,6 @@ TEST:
   index_step: 0  # evaluation step index in list, 0 means to end
   test_gpu: [0]
   model_path: exp/release/ade20k_kd_psp18_psp101/model/train_epoch_100.pth  # evaluation model path
-  #model_path: initmodel/pspnet101_context_train_epoch_200.pth
   save_folder: exp/release/ade20k_kd_psp18_psp101/result/epoch_99/val/ss  # results save folder
   colors_path: data/ade20k/ade20k_colors.txt  # path of dataset colors
   names_path: data/ade20k/ade20k_names.txt  # path of dataset category names
