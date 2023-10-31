@@ -14,7 +14,7 @@ We verify our code on
 * torch 1.12.1
 * torchvision 0.13.1
 
-Other similar envirouments should also work properly.
+Other similar environments should also work properly.
 
 ## Installation
 
@@ -27,9 +27,9 @@ cd APD/
 
 | Dataset        | Student    | Teacher     | Baseline | Ours  |
 |----------------|------------|-------------|----------|-------|
-| ade20k         | PSPNet-R18 | PSPNet-R101 | 37.19    | 39.25 |
-| cityscapes     | PSPNet-R18 | PSPNet-R101 | 74.15    | 75.68 |
-| pascal context | PSPNet-R18 | PSPNet-R101 | 42.29    | 43.96 |
+| ade20k         | [PSPNet-R18](https://github.com/akuxcw/APD/releases/download/v1.0/ade20k_psp18_psp101.pth) | [PSPNet-R101](https://github.com/akuxcw/APD/releases/download/v1.0/pspnet101_fc_ade20k.pth) | 37.19    | 39.25 |
+| cityscapes     | [PSPNet-R18](https://github.com/akuxcw/APD/releases/download/v1.0/cityscapes_psp18_psp101.pth) | [PSPNet-R101](https://github.com/akuxcw/APD/releases/download/v1.0/pspnet101_fc_cityscapes.pth) | 74.15    | 75.68 |
+| pascal context | [PSPNet-R18](https://github.com/akuxcw/APD/releases/download/v1.0/context_psp18_psp101.pth) | [PSPNet-R101](https://github.com/akuxcw/APD/releases/download/v1.0/pspnet101_fc_context.pth) | 42.29    | 43.96 |
 
 
 
