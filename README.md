@@ -19,7 +19,7 @@ Other similar environments should also work properly.
 ## Installation
 
 ```
-git clone git@github.com:akuxcw/APD.git
+git clone https://github.com/dvlab-research/APD.git
 cd APD/
 ```
 
