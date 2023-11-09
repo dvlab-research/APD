@@ -42,7 +42,7 @@ bash ./tool/train.sh ade20k release_psp18_psp101
 
 ## <a name="Citation"></a>Citation
 
-Please consider citing ReviewKD in your publications if it helps your research.
+Please consider citing us in your publications if it helps your research.
 
 ```bib
 @article{APD,
